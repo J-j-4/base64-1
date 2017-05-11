@@ -19,18 +19,3 @@ def decode(cipher):
 	b = re.findall("........", ''.join(format(int(x), '06b') for x in a))			#convert to 6bit to 8bit
 	c = ''.join(chr(int(i,2)) for i in b)											#convert to string
 	return c
-
-f = open(sys.argv[1], 'r')
-c = int(f.readline())
-
-while c > 0:
-	line = f.readline()
-	if not line: break
-	
-	e = line[0]
-	plain_text = line[2:]
-
-	if(e == "e"): print(encode(plain_text))
-	elif(e == "d"): print(decode(plain_text))
-
-	c = c-1
